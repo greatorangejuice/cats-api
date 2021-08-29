@@ -1,26 +1,23 @@
 ---
 swagger: "2.0"
 info:
-  description: "This is a sample server Petstore server.  You can find out more about\
-    \ Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).\
-    \  For this sample, you can use the api key `special-key` to test the authorization\
-    \ filters."
+  description: "Cats API for AWS Cloud"
   version: "1.0.5"
-  title: "Swagger Petstore"
+  title: "Swagger Cats Shop API"
   termsOfService: "http://swagger.io/terms/"
   contact:
-    email: "apiteam@swagger.io"
+    email: "bypavelsnigirev@gmail.com"
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 host: "petstore.swagger.io"
 basePath: "/v2"
 tags:
-- name: "pet"
-  description: "Everything about your Pets"
+- name: "Get all cats"
+  description: "Getting cats list"
   externalDocs:
-    description: "Find out more"
-    url: "http://swagger.io"
+    description: "Will find all cats"
+    url: "https://wy7ppwbbh0.execute-api.eu-west-1.amazonaws.com/dev/product"
 - name: "store"
   description: "Access to Petstore orders"
 - name: "user"
@@ -197,20 +194,20 @@ paths:
         - "write:pets"
         - "read:pets"
       deprecated: true
-  /pet/{petId}:
+  /dev/product/{petId}:
     get:
       tags:
-      - "pet"
-      summary: "Find pet by ID"
-      description: "Returns a single pet"
-      operationId: "getPetById"
+      - "cat"
+      summary: "Find cat by ID"
+      description: "Returns a single cat"
+      operationId: "getCatById"
       produces:
       - "application/json"
       - "application/xml"
       parameters:
-      - name: "petId"
+      - name: "catId"
         in: "path"
-        description: "ID of pet to return"
+        description: "ID of cat to return"
         required: true
         type: "integer"
         format: "int64"
@@ -220,11 +217,9 @@ paths:
           schema:
             $ref: "#/definitions/Pet"
         400:
-          description: "Invalid ID supplied"
+          description: "Bad request"
         404:
-          description: "Pet not found"
-      security:
-      - api_key: []
+          description: "Cat not found"
     post:
       tags:
       - "pet"
